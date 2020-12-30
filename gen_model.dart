@@ -1,6 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
+///#region USER DEFINITION
+/// Update route model info
+final String rootModelFile = 'event.dart';
+final String rootModelClass = 'Event';
+/// Paste your json content here
 const String json = '''
 {
   "id": 0,
@@ -21,6 +26,9 @@ const String json = '''
 }
 ''';
 
+///#endregion`
+/// -----------------------------------
+/// Default Template. Do not change it.
 final String classTemplate = '''
 class Template {
   Template();
@@ -255,7 +263,5 @@ Future<void> createModel(
 
 Future<void> main() async {
   final Map<String, dynamic> decodedJson = jsonDecode(json);
-  final String rootModelFileName = 'event.dart';
-  final String rootModelClassName = 'Event';
-  createModel(rootModelFileName, rootModelClassName, decodedJson);
+  createModel(rootModelFile, rootModelClass, decodedJson);
 }
