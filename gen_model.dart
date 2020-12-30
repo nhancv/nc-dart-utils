@@ -22,7 +22,7 @@ const String json = '''
     "url": "string",
     "icon": "string",
     "name": "string"
-  }],
+  }]
 }
 ''';
 
