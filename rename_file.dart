@@ -121,19 +121,19 @@ void test() {
 // - Standard file name in Directory
 // - Standard place of file
 // Context:
-// ./Assets/addNew.png
-// ./Assets/addNew@2x.png
-// ./Assets/addNew@3x.png
+// ./res/addNew.png
+// ./res/addNew@2x.png
+// ./res/addNew@3x.png
 //
 // Output
-// ./Assets/add_new.png
-// ./Assets/2.0x/add_new.png
-// ./Assets/3.0x/add_new.png
+// ./res/add_new.png
+// ./res/2.0x/add_new.png
+// ./res/3.0x/add_new.png
 // --------
 /// How to run:
-/// Setup PATH point to: flutter\bin\cache\dart-sdk\bin
-/// * Run:
-/// * dart flutter_rename_file.dart
+/// - Create res folder
+/// - Put images to inside res folder
+/// - Run script
 void main() async {
   // Test
   // test();
