@@ -5,6 +5,7 @@ import 'dart:io';
 /// Update route model info
 final String rootModelFile = 'event.dart';
 final String rootModelClass = 'Event';
+
 /// Paste your json content here
 const String json = '''
 {
@@ -39,6 +40,8 @@ class Template {
   ///#endregion
 
   Map<String, dynamic> toJson() => <String, dynamic>{};
+
+  Template clone() => Template();
 
   @override
   String toString() {
@@ -248,6 +251,16 @@ Future<void> createModel(
     tmpToJson += '\t\t\t};';
     classContent = classContent.replaceFirst(toJsonPattern, tmpToJson);
 
+    /// Update clone
+    String clonePattern = '$rootModelClassName();';
+    String tmpClone = '$rootModelClassName(\n';
+    decodedJson.forEach((String key, dynamic value) {
+      String standardName = standardPropertyName(key);
+      tmpClone += '\t\t\t\t$standardName: $standardName,\n';
+    });
+    tmpClone += '\t\t\t);';
+    classContent = classContent.replaceFirst(clonePattern, tmpClone);
+
     /// Update to String
     String toStringPattern = '\'$rootModelClassName{}\';';
     String tmpToString = '\'\'\'$rootModelClassName{\n';
@@ -262,6 +275,9 @@ Future<void> createModel(
 }
 
 Future<void> main() async {
+  // Clear models dir
+  Directory('models').deleteSync(recursive: true);
+  // Process
   final Map<String, dynamic> decodedJson = jsonDecode(json);
   createModel(rootModelFile, rootModelClass, decodedJson);
 }
