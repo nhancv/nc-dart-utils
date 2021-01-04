@@ -6,26 +6,26 @@ import 'dart:io';
 final String rootModelFile = 'event.dart';
 final String rootModelClass = 'Event';
 
-/// Paste your json content here
-const String json = '''
-{
-  "id": 0,
-  "name": "string",
-  "starts_at": "string",
-  "ends_at": "string",
-  "is_finished": true,
-  "rating": {
-    "slug": "string",
-    "name": "string"
-  },
-  "social_media_links": [{
-    "id": 0,
-    "url": "string",
-    "icon": "string",
-    "name": "string"
-  }]
-}
-''';
+/// Create new model.json file
+// {
+//   "id": 0,
+//   "name": "string",
+//   "starts_at": "string",
+//   "ends_at": "string",
+//   "is_finished": true,
+//   "rating": {
+//     "slug": "string",
+//     "name": "string"
+//   },
+//   "social_media_links": [{
+//     "id": 0,
+//     "url": "string",
+//     "icon": "string",
+//     "name": "string"
+//   }]
+// }
+/// Paste your path to json file here
+const String jsonPath = 'model.json';
 
 ///#endregion`
 /// -----------------------------------
@@ -276,8 +276,11 @@ Future<void> createModel(
 
 Future<void> main() async {
   // Clear models dir
-  Directory('models').deleteSync(recursive: true);
+  try {
+    Directory('models').deleteSync(recursive: true);
+  } catch (e) {}
   // Process
+  final String json = File(jsonPath).readAsStringSync();
   final Map<String, dynamic> decodedJson = jsonDecode(json);
   createModel(rootModelFile, rootModelClass, decodedJson);
 }
