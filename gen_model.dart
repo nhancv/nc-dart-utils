@@ -3,8 +3,8 @@ import 'dart:io';
 
 ///#region USER DEFINITION
 /// Update route model info
-final String rootModelFile = 'event.dart';
-final String rootModelClass = 'Event';
+final String rootModelFile = 'user.dart';
+final String rootModelClass = 'User';
 
 /// Create new model.json file
 // {
@@ -266,9 +266,9 @@ Future<void> createModel(
     String tmpToString = '\'\'\'$rootModelClassName{\n';
     decodedJson.forEach((String key, dynamic value) {
       String standardName = standardPropertyName(key);
-      tmpToString += '\t\t$standardName: \$$standardName,\n';
+      tmpToString += '\t\t\t$standardName: \$$standardName,\n';
     });
-    tmpToString += '\t}\'\'\';';
+    tmpToString += '\t\t}\'\'\';';
     classContent = classContent.replaceFirst(toStringPattern, tmpToString);
   }
   genClassFile(rootModelFileName, classContent);

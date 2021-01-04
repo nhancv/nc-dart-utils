@@ -1,19 +1,5 @@
 {
-    "id": 0,
-    "name": "string",
-    "starts_at": "string",
-    "ends_at": "string",
-    "is_finished": true,
-    "rating": {
-        "slug": "string",
-        "name": "string"
-    },
-    "social_media_links": [
-        {
-            "id": 0,
-            "url": "string",
-            "icon": "string",
-            "name": "string"
-        }
-    ]
+	"age": 0,
+	"name": "nhancv",
+	"email": "nhancv92@gmail.com"
 }
